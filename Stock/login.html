@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <!-- Font Family -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+     <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <a href="https://icons8.com/icon/16247/menu"></a>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+
+<style type="text/css">
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+.body{
+  height: 100vh;
+}
+form{
+  margin-top:200px;
+}
+
+.form-group label{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.form-control{
+  width: 400px;
+  height: 40px;
+  background-color: #E5F0FA;
+  font-size: 12px;
+  font-weight: 500;
+  color: #737999;
+}
+
+.form-group{
+  margin-top: 2rem;
+}
+
+.input-group label{
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: #ABCDEF !important;
+  box-shadow: 0 0 5px rgba(171,205,239,1) !important;
+  font-size: 12px;
+  font-weight: 500;
+  color: #737999;
+}
+
+
+.logdet {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+#btn{
+  background-color: #ff3f6f;
+  border-radius: 0.25rem;
+  height: 40px;
+
+}
+.btn:hover{
+  color: white;
+  box-shadow:0 0 3px #ff3f6f !important; 
+}
+
+.foot{
+    text-align: center;    
+    margin-top: 30px;
+    letter-spacing: 0.6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.btn{
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@media (max-width: 990px) {
+  
+}
+
+button:focus {outline:0 !important;}
+
+
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="col-lg-12 p-0">
+      <div class="row">
+        <div class="col-lg-6" >
+          <div class="row justify-content-center">
+            <form>
+              <div class="logdet">Sign In</div>
+              <div class="form-group">
+               <label for="name">User Id</label>
+                 <input type="text" class="form-control" id="name" placeholder="Enter your User Id">
+              </div>  
+              <div class="form-group">
+               <label for="pass">Password</label>
+                 <input type="password" class="form-control" id="pass" placeholder="Enter your Password">
+              </div>
+              <div class="input-group">
+                  <div class="custom-checkbox custom-control col-6">
+                    <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                    <label for="remember" class="custom-control-label">Remeber Me</label>
+                  </div>
+                  <label for="forgot-password" class="col-6">
+                    <a href="#" class="float-right">Forgot Password?</a>
+                  </label>
+                </div>
+              <div class=" form-group d-flex justify-content-center" id="btn">
+               <button type="submit" class="btn btn-block">Sign In</button>
+              </div>
+              <p class="foot">Not a user ? <a href="#" style="color: #64a5e5;text-decoration-line: underline;">Create New Account</a></p>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="https://image.freepik.com/free-vector/stock-exchange-data-illustration_23-2148598414.jpg" class="img-responsive center-block">
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+  
+

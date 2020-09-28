@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <!-- Font Family -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+     <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+  <a href="https://icons8.com/icon/16247/menu"></a>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  
+
+<style type="text/css">
+
+  @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+   
+   body {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#content > .navbar {
+    padding: 8px;
+    background: #fff;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    top:0;
+    position: sticky;
+    z-index:100;
+
+}
+
+
+
+#content .navbar-text{
+  font-size: 15px;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+
+.wrapper {
+  display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width:270px ;
+    max-width:270px;
+    height: 100vh; 
+    background: #f3f7f9;
+    color:black;
+    transition: all 0.3s;
+    z-index: 110;
+}
+
+#sidebar.active {
+    margin-left: -270px;
+}
+
+.sidebar-header {
+    background: white;
+}
+
+
+
+#sidebar ul li a {
+    padding: 8px;
+    display: block;
+    border-top : 1px solid #ccc;
+    border-bottom: 0.5px solid #e5e5e5;
+}
+
+#sidebar ul li a:hover {
+    color: black;
+    background:#ede4f5;
+    border: 2px solid #a54ff0;
+}
+
+#sidebar ul li a i{
+  padding:0 15px;
+  font-size: 15px;
+}
+
+.active .number{
+
+  color: green;
+}
+
+#sidebar ul li.active>a, a[aria-expanded="true"] {
+    color: black;
+    background:#ede4f5;
+    border: 2px solid #a54ff0;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.navleft{
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+
+.navright{
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: red;
+}
+
+.sideheader{
+  padding: 10px;
+}
+
+.sidemain{
+  padding: 10px;
+  align-items: center;
+}
+
+#dropdownMenuButton{
+  width: 150px;
+  background-color: white;
+  color: black;
+  border:none;
+  height: 30px;
+  margin-left: 20px;
+}
+
+.btn{
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.addbutton{
+  border-radius:15px; 
+  background-color: blue;
+  color: white;
+}
+
+.banktext{
+   font-size:12px;
+   font-weight: 700;
+   font-family: Arial;
+}
+.number{
+   font-size:12px;
+   font-weight: 700;
+   font-family:  Arial;
+  }
+
+.sametext{
+   color:#323232;
+   font-size:10px;
+   font-weight: 500;
+   font-family: Arial;
+}
+.percent{
+   color:#323232;
+   font-size:10px;
+   font-weight: 500;
+   font-family: Arial;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    min-height: 150vh;
+    transition: all 0.3s;
+    background-color: white;
+    z-index:180;
+}
+
+#content ul li a{
+    padding: 10px;
+    font-size: 1.5em;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-weight: 600;
+}
+
+#content ul li.active>a, a[aria-expanded="true"] {
+    color: #a54ff0;
+}
+
+#content ul li a:hover {
+   color: #a54ff0;
+    
+}
+
+#graph{
+    width: 100%;
+}
+
+.card-header{
+ background-color: white;
+}
+
+.card-body{
+  background-color: rgba(0,0,0,.03);
+}
+
+#tables ul li a{
+    font-size: 1.2em;
+    font-family: "Raleway",sans-serif;
+    font-weight: 800;
+}
+
+
+button:focus {outline:0 !important;}
+
+#graph .dropdown a{
+  font-size: 1.4rem;
+  font-family: Arial;
+  font-weight: 500;
+}
+
+.dropdown-toggle::after { 
+            display: none !important; 
+        } 
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+
+
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -270px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+
+
+}
+
+
+
+@media (min-width: 390px ) and (max-width: 526px){
+
+#content{
+  margin-right:0;}
+
+}
+</style>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="row sideheader">
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between">
+                      <div class="navleft ">NEFTY</div>
+                      <div class="navright">-2.21%</div>
+                      
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>NSE INDEX</div>
+                      <div>11,250</div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between">
+                      <div class="navleft">SENSEX</div>
+                     <div class="navright">-2.09%</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                       <div>BSE INDEX</div>
+                      <div>38,321</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            
+            <div class="row sidemain" >
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <span class="float-sm-left">Indices</span>
+                       <i class="fa fa-angle-down float-sm-right mt-1" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+              <div class="btn"><i class="fa fa-align-left" aria-hidden="true"></i></div>
+              <div class="btn"><i class="fa fa-random" aria-hidden="true"></i></div>
+              <div class="btn addbutton"><i class="fa fa-plus"></i></div>
+            </div>
+  
+
+
+            <ul class="list-unstyled components">        
+                 <li class="active">
+                   <a href="#"> 
+                    <div class=" d-flex justify-content-between">
+                      <div class="banktext">ICICI BANK</div>
+                      <div class="number">350.0</div>
+                    </div>
+                    <div class=" d-flex justify-content-between">
+                      <div class="sametext">NSE EQ</div>
+                      <div class="percent">-18.85(2.09%)</div>
+                    </div>
+                   </a> 
+                </li>
+                <li>
+                   <a href="#"> 
+                    <div class=" d-flex justify-content-between">
+                      <div class="banktext">YES BANK</div>
+                      <div class="number">167.0</div>
+                    </div>
+                    <div class=" d-flex justify-content-between">
+                      <div class="sametext">NSE EQ</div>
+                      <div class="percent">45.85(12.09%)</div>
+                    </div>
+                   </a> 
+                </li>
+                <li>
+                   <a href="#"> 
+                    <div class=" d-flex justify-content-between">
+                      <div class="banktext">RELIANCE</div>
+                      <div class="number">8850.0</div>
+                    </div>
+                    <div class=" d-flex justify-content-between">
+                      <div class="sametext">NSE EQ</div>
+                      <div class="percent">7.85(52.09%)</div>
+                    </div>
+                   </a> 
+                </li>
+                <li>
+                   <a href="#"> 
+                    <div class=" d-flex justify-content-between">
+                      <div class="banktext">HDFC BANK</div>
+                      <div class="number">850.0</div>
+                    </div>
+                    <div class=" d-flex justify-content-between">
+                      <div class="sametext">NSE EQ</div>
+                      <div class="percent">-68.85(52.09%)</div>
+                    </div>
+                   </a> 
+                </li>
+
+             
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="container-fluid p-0 m-0">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light pb-0 pt-0">
+                <div class="container-fluid pr-0 pl-0">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-light text-sidebar ">
+                        <!-- <i class="fas fa-align-left"></i> --><img src="https://img.icons8.com/windows/22/000000/menu.png"/>
+                        <span></span> <!-- <span class="navbar-toggler-icon"></span> -->
+                        
+                    </button>
+                    <button class="btn btn-light d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <!-- <i class="fas fa-align-justify"></i> --><img src="https://img.icons8.com/windows/22/000000/menu.png"/> <!--  <span class="navbar-toggler-icon"></span> -->
+                    </button>
+
+
+
+                    <div class="collapse navbar-collapse mr-0 ml-0" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Trade</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Funds</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav ml-auto">
+                             <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-lightbulb-o" aria-hidden="true"  style="font-size: 20px;"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> <i class="fa fa-bell" aria-hidden="true"  style="font-size: 17px;"></i></a>
+                            </li>
+                               <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mohini Panchal<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Page 1-1</a></li>
+                                  <li><a href="#">Page 1-2</a></li>
+                                  <li><a href="#">Page 1-3</a></li>
+                                </ul>
+                              </li>
+
+
+                        </ul>
+                       
+                    </div>
+                </div>
+            </nav>
+
+            
+            <div id="graph" class="container-fluid pr-0 pl-0">
+               <div class="col-lg-12" id="data-graph">
+                  <div class="card">
+                    <div class="card-header p-0">
+                       
+                     
+                       <ul class="nav w-100">
+                           <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fa fa-th" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link " href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            </li>
+                             <li class="nav-item">
+                              <a class="nav-link " href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            </li>
+                             <li class="nav-item">
+                              <a class="nav-link " href="#"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            </li>
+
+                              <li class="dropdown ml-auto"><a class="dropdown-toggle" data-toggle="dropdown" href="#">1H<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Page 1-1</a></li>
+                                  <li><a href="#">Page 1-2</a></li>
+                                  <li><a href="#">Page 1-3</a></li>
+                                </ul>
+                              </li>
+
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Views<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Page 1-1</a></li>
+                                  <li><a href="#">Page 1-2</a></li>
+                                  <li><a href="#">Page 1-3</a></li>
+                                </ul>
+                              </li>
+
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Display<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Page 1-1</a></li>
+                                  <li><a href="#">Page 1-2</a></li>
+                                  <li><a href="#">Page 1-3</a></li>
+                                </ul>
+                              </li>
+
+                              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Study<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Page 1-1</a></li>
+                                  <li><a href="#">Page 1-2</a></li>
+                                  <li><a href="#">Page 1-3</a></li>
+                                </ul>
+                              </li>
+                            
+                            <li class="nav-item" >
+                            <a class="nav-link active" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                            </li>
+
+
+                       </ul>
+                       
+                     
+                      
+                     </div>
+                        <div class="card-body">
+                         <img src="https://bigdataenthusiast.files.wordpress.com/2016/11/31.jpg"  width="100%" height="350px";>
+                        </div>
+                        <div class="card-footer bg-transparent"></div>
+                     </div>
+                      </div>
+               </div> 
+               <br>
+                <div class="col-lg-12" id="tables">
+                  <div class="card">
+                    <div class="card-header  col-sm-12">
+                          <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item col-sm-3 pr-0 pl-0">
+                              <a class="nav-link active" href="#">ORDERS</a>
+                            </li>
+                            <li class="nav-item col-sm-3 pr-0 pl-0">
+                              <a class="nav-link" href="#">POSITIONS</a>
+                            </li>
+                            <li class="nav-item col-sm-4 pr-0 pl-0">
+                              <a class="nav-link" href="#">HOLDINGS</a>
+                            </li>
+                             <li class="nav-item col-sm-2 pr-0 pl-0">
+                              <div class="row">
+                              <a class="nav-link" href="#"><i class="fa fa-repeat" aria-hidden="true"></i></a>
+                              <a class="nav-link" href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                              <a class="nav-link" href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></div>
+                            </li>
+                       
+                          </ul>
+                        </div>
+                        <div class="card-body">
+                          
+                        </div>
+                      </div>
+
+                    </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+</script>
+
+
+  
+</body>
+
+</html>
